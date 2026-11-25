@@ -1,0 +1,51 @@
+{
+  "name": "suraksha-x",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx server.ts",
+    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "start": "node dist/server.cjs",
+    "preview": "vite preview",
+    "clean": "node -e \"for (const d of ['dist']) require('fs').rmSync(d,{recursive:true,force:true})\"",
+    "lint": "tsc --noEmit",
+    "test:api": "node scripts/api-smoke-test.mjs",
+    "satellite": "node scripts/start-satellite.mjs",
+    "test": "node --import tsx --test \"tests/*.test.ts\"",
+    "build:api": "esbuild api-src/handler.ts --bundle --platform=node --format=esm --packages=external --outfile=api/index.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.4.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "@types/leaflet": "^1.9.22",
+    "@vercel/functions": "^3.11.3",
+    "@vitejs/plugin-react": "^5.0.4",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^0.546.0",
+    "mongodb": "^7.9.0",
+    "motion": "^12.23.24",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "react-leaflet": "^5.0.0",
+    "recharts": "^3.10.1",
+    "vite": "^6.2.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "autoprefixer": "^10.4.21",
+    "esbuild": "^0.25.0",
+    "tailwindcss": "^4.1.14",
+    "tsx": "^4.21.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
